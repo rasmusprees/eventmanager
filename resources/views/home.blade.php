@@ -44,12 +44,22 @@
                             </div>
                         </div>
                     </form>
+
+
+                        <div class="col-sm-offset-3 col-sm-6">
+                            <div class="list-group list-group-flush">
+                                <label for="mission" class="col-sm-6 control-label">Your Events:</label>
+                            <!-- Current Tasks -->
+                                @foreach($missions as $mission)
+                                    <a href="#" class="list-group-item list-group-item-action">{{$mission->mission_name}}</a>
+                                @endforeach
+                            </div>
+                        </div>
+
+
                 </div>
 
-                <!-- Current Tasks -->
-                @foreach($missions as $mission)
-                        <li>{{$mission->mission_name}}</li>
-                @endforeach
+
 
 
             </div>
