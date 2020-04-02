@@ -14,10 +14,9 @@ class Budget extends Migration
     public function up()
     {
         Schema::create('budget', function (Blueprint $table) {
-            $table->bigIncrements('budget_id');
+            $table->increments('budget_id');
             $table->string('budget');
-            $table->bigInteger('mission_id')->unsigned();
-            $table->foreign('mission_id')->references('mission_id')->on('mission');
+            $table->integer('mission_id');
         });
     }
 

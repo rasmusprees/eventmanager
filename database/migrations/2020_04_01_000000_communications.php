@@ -14,11 +14,10 @@ class Communications extends Migration
     public function up()
     {
         Schema::create('communications', function (Blueprint $table) {
-            $table->bigIncrements('communications_id');
+            $table->increments('communications_id');
             $table->string('coms');
             $table->string('names_and_numbers');
-            $table->bigInteger('mission_id')->unsigned();
-            $table->foreign('mission_id')->references('mission_id')->on('mission');
+            $table->integer('mission_id');
         });
     }
 

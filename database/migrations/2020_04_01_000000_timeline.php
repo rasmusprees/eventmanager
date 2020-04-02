@@ -14,11 +14,10 @@ class Timeline extends Migration
     public function up()
     {
         Schema::create('timeline', function (Blueprint $table) {
-            $table->bigIncrements('situation_id');
+            $table->increments('situation_id');
             $table->string('event_time');
             $table->string('event_name');
-            $table->bigInteger('mission_id')->unsigned();
-            $table->foreign('mission_id')->references('mission_id')->on('mission');
+            $table->integer('mission_id');
         });
     }
 

@@ -14,12 +14,11 @@ class Dates extends Migration
     public function up()
     {
         Schema::create('dates', function (Blueprint $table) {
-            $table->bigIncrements('dates_id');
+            $table->increments('dates_id');
             $table->string('from_date');
             $table->string('to_date');
             $table->timestamp('inserted');
-            $table->bigInteger('mission_id')->unsigned();
-            $table->foreign('mission_id')->references('mission_id')->on('mission');
+            $table->integer('mission_id');
         });
     }
 

@@ -14,7 +14,7 @@ class Mission extends Migration
     public function up()
     {
         Schema::create('mission', function (Blueprint $table) {
-            $table->bigIncrements('mission_id');
+            $table->increments('mission_id');
             $table->string('main_goal');
             $table->string('movement_to_location');
             $table->string('movement_from_location');

@@ -14,11 +14,9 @@ class Participants extends Migration
     public function up()
     {
         Schema::create('participants', function (Blueprint $table) {
-            $table->bigIncrements('participants_id');
-            $table->bigInteger('mission_id')->unsigned();
-            $table->foreign('mission_id')->references('mission_id')->on('mission');
-            $table->bigInteger('users_id')->unsigned();
-            $table->foreign('users_id')->references('id')->on('users');
+            $table->increments('participants_id');
+            $table->integer('mission_id');
+            $table->integer('users_id');
         });
     }
 

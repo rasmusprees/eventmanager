@@ -14,11 +14,10 @@ class LocalSituation extends Migration
     public function up()
     {
         Schema::create('local_situation', function (Blueprint $table) {
-            $table->bigIncrements('situation_id');
+            $table->increments('situation_id');
             $table->string('local_activities');
             $table->string('stay_at_night');
-            $table->bigInteger('mission_id')->unsigned();
-            $table->foreign('mission_id')->references('mission_id')->on('mission');
+            $table->integer('mission_id');
         });
     }
 
