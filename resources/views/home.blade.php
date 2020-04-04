@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="btn-group d-flex">
-        <a href="/home" class="btn btn-primary">Created Events</a>
+        <a href="/home" class="btn btn-primary active">Created Events</a>
         <a href="/new-mission" class="btn btn-primary">Start New Event</a>
     </div>
 
