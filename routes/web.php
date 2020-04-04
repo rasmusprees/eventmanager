@@ -14,6 +14,7 @@
 use App\Mission;
 use Illuminate\Http\Request;
 
+Route::get('/new-mission', 'MissionsController@createMission');
 
 Route::get('/home', 'MissionsController@showMissions');
 

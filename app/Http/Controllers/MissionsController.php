@@ -35,5 +35,10 @@ class MissionsController extends Controller
         return view('home', ['missions' => $mission_list]);
     }
 
+    public function createMission()
+    {
+        return view('new-mission');
+    }
+
 
 }
