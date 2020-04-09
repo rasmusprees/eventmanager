@@ -11,7 +11,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="panel-body">
-                        <form action="/action_page.php">
+                        <form method="POST" action="/new-mission">
+                            @csrf
                             <div id="accordion">
 
                                 <div class="card">
@@ -24,9 +25,9 @@
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="mission_name">Sündmuse nimi:</label>
-                                                <textarea class="form-control" rows="1" placeholder="Event Name" id="mission_name"></textarea>
+                                                <textarea class="form-control" rows="1" placeholder="Event Name" name="mission_name" id="mission_name"></textarea>
                                                 <label for="timeline">Sündmuse toimumise aeg:</label>
-                                                <textarea class="form-control" rows="1" placeholder="Timeline" id="timeline"></textarea>
+                                                <textarea class="form-control" rows="1" placeholder="Timeline" name="timeline" id="timeline"></textarea>
                                                 <label for="timeline">Lisa osalejad:</label>
                                                 <textarea class="form-control" rows="1" placeholder="Timeline" id="timeline"></textarea>
                                                 <label for="timeline">Kus sündmus toimub? Koha nimi ja millised on ööbimisvõimalused. Kuidas on parkimisega?:</label>
@@ -47,8 +48,8 @@
                                     <div id="collapseTwo" class="collapse" data-parent="#accordion">
                                         <div class="card-body">
                                             <div class="form-group">
-                                                <label for="mission_name">Mis on sündmuse eesmärk?:</label>
-                                                <textarea class="form-control" rows="1" placeholder="Event Name" id="mission_name"></textarea>
+                                                <label for="main_goal">Mis on sündmuse eesmärk?:</label>
+                                                <textarea class="form-control" rows="1" name="main_goal" id="main_goal"></textarea>
                                                 <label for="timeline">Kui osalejad moodustavad meeskonnad, siis kes millisesse meeskonda kuulub:</label>
                                                 <textarea class="form-control" rows="1" placeholder="Timeline" id="timeline"></textarea>
                                             </div>
@@ -65,10 +66,10 @@
                                     <div id="collapseThree" class="collapse" data-parent="#accordion">
                                         <div class="card-body">
                                             <div class="form-group">
-                                                <label for="mission_name">Liikumine ürituse toimumise paika. Erinevad transpordi variandid(väljumised kellaajaliselt, peatused kellaajaliselt, piletite hinnad):</label>
-                                                <textarea class="form-control" rows="1" placeholder="Event Name" id="mission_name"></textarea>
-                                                <label for="timeline">Liikumine ürituse toimumise paigast tagasi koju. Erinevad transpordi variandid(väljumised kellaajaliselt, peatused kellaajaliselt, piletite hinnad):</label>
-                                                <textarea class="form-control" rows="1" placeholder="Timeline" id="timeline"></textarea>
+                                                <label for="movement_to_location">Liikumine ürituse toimumise paika. Erinevad transpordi variandid(väljumised kellaajaliselt, peatused kellaajaliselt, piletite hinnad):</label>
+                                                <textarea class="form-control" rows="1" placeholder="Event Name" name="movement_to_location" id="movement_to_location"></textarea>
+                                                <label for="movement_from_location">Liikumine ürituse toimumise paigast tagasi koju. Erinevad transpordi variandid(väljumised kellaajaliselt, peatused kellaajaliselt, piletite hinnad):</label>
+                                                <textarea class="form-control" rows="1" placeholder="Timeline" name="movement_from_location" id="movement_from_location"></textarea>
                                                 <label for="timeline">Osalejate ülesanded. Kui osalejatel on spetsiaalseid ülesandeid, siis täpsustada täitmise kellaaeg, koht ja viis:</label>
                                                 <textarea class="form-control" rows="1" placeholder="Timeline" id="timeline"></textarea>
                                                 <label for="timeline">Sündmuse timeline:</label>
@@ -88,7 +89,7 @@
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="mission_name">Kus ja mis kell toimub toitlustamine. Kas kohapeal kõik olemas või tuleb midagi kaasa võtta. Kes võtab mida(söögid,joogid,toidunõud)?:</label>
-                                                <textarea class="form-control" rows="1" placeholder="Event Name" id="mission_name"></textarea>
+                                                <textarea class="form-control" rows="1" placeholder="Event Name" name="food" id="mission_name"></textarea>
                                                 <label for="timeline">Riietus:</label>
                                                 <textarea class="form-control" rows="1" placeholder="Timeline" id="timeline"></textarea>
                                                 <label for="timeline">Eritehnika. Mis võimalused on kohapeal olemas ja kas midagi on vaja kaasa võtta? Kui on vaja midagi kaasa võtta, siis täpsustada, kes mida võtab:</label>

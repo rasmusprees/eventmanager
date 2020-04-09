@@ -9,24 +9,7 @@ use Illuminate\Support\Facades\Validator;
 class MissionsController extends Controller
 {
 
-    public function saveMission(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'mission_name' => 'required|max:255',
-        ]);
 
-        if ($validator->fails()) {
-            return redirect('/home')
-                ->withInput()
-                ->withErrors($validator);
-        }
-
-        $event = new Mission;
-        $event->mission_name = $request->mission_name;
-        $event->save();
-
-        return redirect('/home');
-    }
 
     public function showMissions()
     {
@@ -38,6 +21,18 @@ class MissionsController extends Controller
     public function createMission()
     {
         return view('new-mission');
+    }
+
+    public function store(Request $request)
+    {
+        $mission = new Mission;
+        $mission->mission_name = $request->mission_name;
+        $mission->main_goal = $request->main_goal;
+        $mission->movement_to_location=$request->movement_to_location;
+        $mission->movement_from_location=$request->movement_from_location;
+        $mission->save();
+
+        return view('/home');
     }
 
 

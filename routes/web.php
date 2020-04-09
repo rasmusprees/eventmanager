@@ -14,11 +14,11 @@
 use App\Mission;
 use Illuminate\Http\Request;
 
+Route::post('/new-mission', 'MissionsController@store');
+
 Route::get('/new-mission', 'MissionsController@createMission');
 
 Route::get('/home', 'MissionsController@showMissions');
-
-Route::post('/home', 'MissionsController@saveMission');
 
 Route::get('/', 'HomeController@welcome');
 
