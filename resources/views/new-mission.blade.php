@@ -25,15 +25,17 @@
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="mission_name">Sündmuse nimi:</label>
-                                                <textarea class="form-control" rows="1" placeholder="Event Name" name="mission_name" id="mission_name"></textarea>
-                                                <label for="timeline">Sündmuse toimumise aeg:</label>
-                                                <textarea class="form-control" rows="1" placeholder="Timeline" name="timeline" id="timeline"></textarea>
-                                                <label for="timeline">Lisa osalejad:</label>
-                                                <textarea class="form-control" rows="1" placeholder="Timeline" id="timeline"></textarea>
-                                                <label for="timeline">Kus sündmus toimub? Koha nimi ja millised on ööbimisvõimalused. Kuidas on parkimisega?:</label>
-                                                <textarea class="form-control" rows="1" placeholder="Timeline" id="timeline"></textarea>
-                                                <label for="timeline">Loetle üles vaba aja veetmise võimalused:</label>
-                                                <textarea class="form-control" rows="1" placeholder="Timeline" id="timeline"></textarea>
+                                                <textarea class="form-control" rows="1" placeholder="Event Name" name="mission_name" id="mission_name" required></textarea>
+                                                <label for="from_date">Sündmuse algusaeg:</label>
+                                                <textarea class="form-control" rows="1" placeholder="event start at" name="from_date" id="from_date"></textarea>
+                                                <label for="to_date">Sündmuse lõpuaeg:</label>
+                                                <textarea class="form-control" rows="1" placeholder="event finish at" name="to_date" id="to_date"></textarea>
+                                                <label for="listOfPeople">Lisa osalejad:</label>
+                                                <textarea class="form-control" rows="1" placeholder="osalejate nimed" name="listOfPeople" id="listOfPeople"></textarea>
+                                                <label for="stay_at_night">Kus sündmus toimub? Koha nimi ja millised on ööbimisvõimalused. Kuidas on parkimisega?:</label>
+                                                <textarea class="form-control" rows="1" placeholder="kus toimub" name="stay_at_night" id="stay_at_night"></textarea>
+                                                <label for="local_activities">Loetle üles vaba aja veetmise võimalused:</label>
+                                                <textarea class="form-control" rows="1" placeholder="vaba aeg" name="local_activities" id="local_activities"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -49,9 +51,9 @@
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="main_goal">Mis on sündmuse eesmärk?:</label>
-                                                <textarea class="form-control" rows="1" name="main_goal" id="main_goal"></textarea>
-                                                <label for="timeline">Kui osalejad moodustavad meeskonnad, siis kes millisesse meeskonda kuulub:</label>
-                                                <textarea class="form-control" rows="1" placeholder="Timeline" id="timeline"></textarea>
+                                                <textarea class="form-control" rows="1" name="main_goal" id="main_goal" required></textarea>
+                                                <label for="team_name">Kui osalejad moodustavad meeskonnad, siis kes millisesse meeskonda kuulub:</label>
+                                                <textarea class="form-control" rows="1" placeholder="meeskonna nimi" name="team_name" id="team_name"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -67,11 +69,11 @@
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="movement_to_location">Liikumine ürituse toimumise paika. Erinevad transpordi variandid(väljumised kellaajaliselt, peatused kellaajaliselt, piletite hinnad):</label>
-                                                <textarea class="form-control" rows="1" placeholder="Event Name" name="movement_to_location" id="movement_to_location"></textarea>
+                                                <textarea class="form-control" rows="1" placeholder="liikumine sinna" name="movement_to_location" id="movement_to_location" required></textarea>
                                                 <label for="movement_from_location">Liikumine ürituse toimumise paigast tagasi koju. Erinevad transpordi variandid(väljumised kellaajaliselt, peatused kellaajaliselt, piletite hinnad):</label>
-                                                <textarea class="form-control" rows="1" placeholder="Timeline" name="movement_from_location" id="movement_from_location"></textarea>
-                                                <label for="timeline">Osalejate ülesanded. Kui osalejatel on spetsiaalseid ülesandeid, siis täpsustada täitmise kellaaeg, koht ja viis:</label>
-                                                <textarea class="form-control" rows="1" placeholder="Timeline" id="timeline"></textarea>
+                                                <textarea class="form-control" rows="1" placeholder="liikumine tagasi" name="movement_from_location" id="movement_from_location" required></textarea>
+                                                <label for="assignments">Osalejate ülesanded. Kui osalejatel on spetsiaalseid ülesandeid, siis täpsustada täitmise kellaaeg, koht ja viis:</label>
+                                                <textarea class="form-control" rows="1" placeholder="ülesanded" name="assignments" id="assignments"></textarea>
                                                 <label for="timeline">Sündmuse timeline:</label>
                                                 <textarea class="form-control" rows="1" placeholder="Timeline" id="timeline"></textarea>
                                             </div>
@@ -88,16 +90,16 @@
                                     <div id="collapseThree" class="collapse" data-parent="#accordion">
                                         <div class="card-body">
                                             <div class="form-group">
-                                                <label for="mission_name">Kus ja mis kell toimub toitlustamine. Kas kohapeal kõik olemas või tuleb midagi kaasa võtta. Kes võtab mida(söögid,joogid,toidunõud)?:</label>
-                                                <textarea class="form-control" rows="1" placeholder="Event Name" name="food" id="mission_name"></textarea>
-                                                <label for="timeline">Riietus:</label>
-                                                <textarea class="form-control" rows="1" placeholder="Timeline" id="timeline"></textarea>
-                                                <label for="timeline">Eritehnika. Mis võimalused on kohapeal olemas ja kas midagi on vaja kaasa võtta? Kui on vaja midagi kaasa võtta, siis täpsustada, kes mida võtab:</label>
-                                                <textarea class="form-control" rows="1" placeholder="Timeline" id="timeline"></textarea>
-                                                <label for="timeline">Sündmuse korraldamiseks/osalemiseks kuluv raha. Lahti kirjutada kõik võimalikud rahalised väljaminekud:</label>
-                                                <textarea class="form-control" rows="1" placeholder="Timeline" id="timeline"></textarea>
-                                                <label for="timeline">Käitumine hädaolukorras. Meditsiiniline tugi, kust saab abi, kes vastutab? Kust leiab sündmuse vastutavad isikud ja isikud kelle käest saab jooksvalt olulist infot? Asendusskeem juhul, kui mõni oluline isik ei ole enam kättesaadav:</label>
-                                                <textarea class="form-control" rows="1" placeholder="Timeline" id="timeline"></textarea>
+                                                <label for="food">Kus ja mis kell toimub toitlustamine. Kas kohapeal kõik olemas või tuleb midagi kaasa võtta. Kes võtab mida(söögid,joogid,toidunõud)?:</label>
+                                                <textarea class="form-control" rows="1" placeholder="toitlustus" name="food" id="food"></textarea>
+                                                <label for="clothing">Riietus:</label>
+                                                <textarea class="form-control" rows="1" placeholder="riietus" name="clothing" id="clothing"></textarea>
+                                                <label for="equipment">Eritehnika. Mis võimalused on kohapeal olemas ja kas midagi on vaja kaasa võtta? Kui on vaja midagi kaasa võtta, siis täpsustada, kes mida võtab:</label>
+                                                <textarea class="form-control" rows="1" placeholder="tehnika" name="equipment" id="equipment"></textarea>
+                                                <label for="budget">Sündmuse korraldamiseks/osalemiseks kuluv raha. Lahti kirjutada kõik võimalikud rahalised väljaminekud:</label>
+                                                <textarea class="form-control" rows="1" placeholder="raha" name="budget" id="budget"></textarea>
+                                                <label for="emergency">Käitumine hädaolukorras. Meditsiiniline tugi, kust saab abi, kes vastutab? Kust leiab sündmuse vastutavad isikud ja isikud kelle käest saab jooksvalt olulist infot? Asendusskeem juhul, kui mõni oluline isik ei ole enam kättesaadav:</label>
+                                                <textarea class="form-control" rows="1" placeholder="häda" name="emergency" id="emergency"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -112,10 +114,10 @@
                                     <div id="collapseThree" class="collapse" data-parent="#accordion">
                                         <div class="card-body">
                                             <div class="form-group">
-                                                <label for="mission_name">Kuidas toimub suhtlus(näited siin)? Milline on tagavara suhtluskanal, kui esmane ei toimi? Kui kasutatakse lisaks ka mingit märguannete abil suhtlemist, siis see siin ka ära kirjeldada:</label>
-                                                <textarea class="form-control" rows="1" placeholder="Event Name" id="mission_name"></textarea>
-                                                <label for="timeline">Nimekiri olulistest nimedest, numbritest ja emaili aadressidest:</label>
-                                                <textarea class="form-control" rows="1" placeholder="Timeline" id="timeline"></textarea>
+                                                <label for="coms">Kuidas toimub suhtlus(näited siin)? Milline on tagavara suhtluskanal, kui esmane ei toimi? Kui kasutatakse lisaks ka mingit märguannete abil suhtlemist, siis see siin ka ära kirjeldada:</label>
+                                                <textarea class="form-control" rows="1" placeholder="suhtlus" name="coms" id="coms"></textarea>
+                                                <label for="names_and_numbers">Nimekiri olulistest nimedest, numbritest ja emaili aadressidest:</label>
+                                                <textarea class="form-control" rows="1" placeholder="nimed ja numbrid" name="names_and_numbers" id="names_and_numbers"></textarea>
                                             </div>
                                         </div>
                                     </div>

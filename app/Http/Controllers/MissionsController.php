@@ -15,7 +15,7 @@ class MissionsController extends Controller
     {
         $mission_list = Mission::all();
 
-        return view('home', ['missions' => $mission_list]);
+        return view('home', compact('mission_list'));
     }
 
     public function createMission()
@@ -23,7 +23,7 @@ class MissionsController extends Controller
         return view('new-mission');
     }
 
-    public function store(Request $request)
+    public function send_to_db(Request $request)
     {
         $mission = new Mission;
         $mission->mission_name = $request->mission_name;
@@ -32,7 +32,9 @@ class MissionsController extends Controller
         $mission->movement_from_location=$request->movement_from_location;
         $mission->save();
 
-        return view('/home');
+        $mission_list = Mission::all();
+
+        return view('home', compact('mission_list'));
     }
 
 
