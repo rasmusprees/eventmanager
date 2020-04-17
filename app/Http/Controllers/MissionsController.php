@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Participants;
 use Illuminate\Http\Request;
 use App\Mission;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class MissionsController extends Controller
 {
@@ -32,9 +34,22 @@ class MissionsController extends Controller
         $mission->movement_from_location=$request->movement_from_location;
         $mission->save();
 
+        $participants = new Participants;
+        $participants->mission_id = $mission->mission_id;
+        $participants->users_id = Auth::id();
+        $participants->save();
+
         $mission_list = Mission::all();
 
         return view('home', compact('mission_list'));
+    }
+
+    public function showSelectedMission()
+    {
+        $mission_list = Mission::all();
+
+
+        return view('home/{mission_id}');
     }
 
 

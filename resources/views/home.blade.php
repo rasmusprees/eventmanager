@@ -26,7 +26,11 @@
             <div class="card h-100">
                 <div class="card-body">
                 <div class="container">
-                    @yield('edit-mission')
+                    <!--siia tuleb mingi if lause teha-->
+
+                        <h5 class="card-title">Tere</h5>
+                        <p class="card-text">Pikk pikk pikk tekst.</p>
+
                 </div>
                 </div>
             </div>

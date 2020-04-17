@@ -8,4 +8,5 @@ class Participants extends Model
 {
     protected $table = 'participants';
     protected $primaryKey = 'participants_id';
+    public $timestamps = false;
 }
