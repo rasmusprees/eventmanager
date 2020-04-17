@@ -14,9 +14,11 @@
 use App\Mission;
 use Illuminate\Http\Request;
 
-Route::get('/home/', 'MissionsController@showMissions');//siin on muudatus!!!
+Route::get('home/{{$mission_id}}', 'MissionController@showSelectedMission');
 
-Route::post('/new-mission', 'MissionsController@send_to_db');
+Route::get('/home/', 'MissionsController@showMissions');
+
+Route::post('/new-mission', 'MissionsController@sendToDb');
 
 Route::get('/new-mission', 'MissionsController@createMission');
 

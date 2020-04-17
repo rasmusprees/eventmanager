@@ -25,7 +25,7 @@ class MissionsController extends Controller
         return view('new-mission');
     }
 
-    public function send_to_db(Request $request)
+    public function sendToDb(Request $request)
     {
         $mission = new Mission;
         $mission->mission_name = $request->mission_name;

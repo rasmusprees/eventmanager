@@ -16,7 +16,7 @@
                         <label for="mission" class="control-label">Your Events:</label>
                     <!-- Current Tasks -->
                         @foreach($mission_list as $mission)
-                            <a href="#" class="list-group-item list-group-item-action">{{$mission->mission_name}}</a>
+                            <a href="/home/{{$mission->mission_id}}" class="list-group-item list-group-item-action">{{$mission->mission_name}}</a>
                         @endforeach
                     </div>
                 </div>
