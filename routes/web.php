@@ -14,7 +14,7 @@
 use App\Mission;
 use Illuminate\Http\Request;
 
-Route::get('home/{{$mission_id}}', 'MissionController@showSelectedMission');
+Route::get('/home/{mission_id}', 'MissionsController@show');
 
 Route::get('/home/', 'MissionsController@showMissions');
 

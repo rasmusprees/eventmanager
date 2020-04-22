@@ -18,7 +18,7 @@ class Dates extends Migration
             $table->string('from_date');
             $table->string('to_date');
             $table->timestamp('inserted');
-            $table->integer('mission_id');
+            $table->unsignedInteger('mission_id');
         });
     }
 

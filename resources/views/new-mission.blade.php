@@ -13,40 +13,52 @@
                     <div class="panel-body">
                         <form method="POST" action="/new-mission">
                             @csrf
+
+                            <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                                <label class="btn btn-secondary active">
+                                    <input type="radio" name="options" id="option1" autocomplete="off" checked data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> 1. Olukord
+                                </label>
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="options" id="option2" autocomplete="off" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> 2. Missioon
+                                </label>
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="options" id="option3" autocomplete="off" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"> 3. Läbiviimine
+                                </label>
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="options" id="option4" autocomplete="off" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour"> 4. Toetus
+                                </label>
+                                <label class="btn btn-secondary">
+                                    <input type="radio" name="options" id="option5" autocomplete="off" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive"> 5. Kommunikatsioon
+                                </label>
+                            </div>
+
+
                             <div id="accordion">
 
                                 <div class="card">
-                                    <div class="card-header">
-                                        <a class="card-link" data-toggle="collapse" href="#collapseOne">
-                                            1. OLUKORD
-                                        </a>
-                                    </div>
+                                    <!--1. missioon-->
                                     <div id="collapseOne" class="collapse show" data-parent="#accordion">
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="mission_name">Sündmuse nimi:</label>
                                                 <textarea class="form-control" rows="1" placeholder="Event Name" name="mission_name" id="mission_name" required></textarea>
                                                 <label for="from_date">Sündmuse algusaeg:</label>
-                                                <textarea class="form-control" rows="1" placeholder="event start at" name="from_date" id="from_date"></textarea>
+                                                <textarea class="form-control" rows="1" name="from_date" id="datepicker"></textarea>
                                                 <label for="to_date">Sündmuse lõpuaeg:</label>
-                                                <textarea class="form-control" rows="1" placeholder="event finish at" name="to_date" id="to_date"></textarea>
+                                                <textarea class="form-control" rows="1" name="to_date" id="datepicker"></textarea>
                                                 <label for="listOfPeople">Lisa osalejad:</label>
                                                 <textarea class="form-control" rows="1" placeholder="osalejate nimed" name="listOfPeople" id="listOfPeople"></textarea>
                                                 <label for="stay_at_night">Kus sündmus toimub? Koha nimi ja millised on ööbimisvõimalused. Kuidas on parkimisega?:</label>
-                                                <textarea class="form-control" rows="1" placeholder="kus toimub" name="stay_at_night" id="stay_at_night"></textarea>
+                                                <textarea class="form-control" rows="4" placeholder="kus toimub" name="stay_at_night" id="stay_at_night"></textarea>
                                                 <label for="local_activities">Loetle üles vaba aja veetmise võimalused:</label>
-                                                <textarea class="form-control" rows="1" placeholder="vaba aeg" name="local_activities" id="local_activities"></textarea>
+                                                <textarea class="form-control" rows="4" placeholder="vaba aeg" name="local_activities" id="local_activities"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="card">
-                                    <div class="card-header">
-                                        <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-                                            2. MISSIOON
-                                        </a>
-                                    </div>
+                                    <!--2. olukord-->
                                     <div id="collapseTwo" class="collapse" data-parent="#accordion">
                                         <div class="card-body">
                                             <div class="form-group">
@@ -60,11 +72,7 @@
                                 </div>
 
                                 <div class="card">
-                                    <div class="card-header">
-                                        <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
-                                            3. LÄBIVIIMINE
-                                        </a>
-                                    </div>
+                                    <!--3. läbiviimine-->
                                     <div id="collapseThree" class="collapse" data-parent="#accordion">
                                         <div class="card-body">
                                             <div class="form-group">
@@ -82,12 +90,8 @@
                                 </div>
 
                                 <div class="card">
-                                    <div class="card-header">
-                                        <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
-                                            4. TOETUS
-                                        </a>
-                                    </div>
-                                    <div id="collapseThree" class="collapse" data-parent="#accordion">
+                                    <!--4. toetus-->
+                                    <div id="collapseFour" class="collapse" data-parent="#accordion">
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="food">Kus ja mis kell toimub toitlustamine. Kas kohapeal kõik olemas või tuleb midagi kaasa võtta. Kes võtab mida(söögid,joogid,toidunõud)?:</label>
@@ -106,12 +110,8 @@
                                 </div>
 
                                 <div class="card">
-                                    <div class="card-header">
-                                        <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
-                                            5. KOMMUNIKATSIOON
-                                        </a>
-                                    </div>
-                                    <div id="collapseThree" class="collapse" data-parent="#accordion">
+                                    <!--5. kommunikatsioon-->
+                                    <div id="collapseFive" class="collapse" data-parent="#accordion">
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="coms">Kuidas toimub suhtlus(näited siin)? Milline on tagavara suhtluskanal, kui esmane ei toimi? Kui kasutatakse lisaks ka mingit märguannete abil suhtlemist, siis see siin ka ära kirjeldada:</label>
@@ -133,4 +133,6 @@
             </div>
         </div>
     </div>
+
+
 @endsection

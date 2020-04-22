@@ -44,12 +44,18 @@ class MissionsController extends Controller
         return view('home', compact('mission_list'));
     }
 
-    public function showSelectedMission()
+    public function show($mission_id)
     {
+        //$mission_list = Mission::find('mission_id', $mission_id);
+        //$post = Post::find($mission_id);
+        //return view('home', compact('mission_list', 'post'));
+
         $mission_list = Mission::all();
-
-
-        return view('home/{mission_id}');
+        return view('home', [
+            'mission' => Mission::findOrFail($mission_id),
+            'mission_list' => $mission_list,
+            'current_mission' => Mission::find($mission_id)
+        ]);
     }
 
 
