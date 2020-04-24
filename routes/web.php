@@ -13,10 +13,14 @@
 
 use App\Mission;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
+
 
 Route::get('/home/{mission_id}', 'MissionsController@show');
 
-Route::get('/home/', 'MissionsController@showMissions');
+Route::get('/home', 'MissionsController@showMissions');
 
 Route::post('/new-mission', 'MissionsController@sendToDb');
 
@@ -26,5 +30,5 @@ Route::get('/', 'HomeController@welcome');
 
 Auth::routes();
 
-/*Route::get('/home', 'HomeController@home')->name('home');*/
 
+/*Route::get('/home', 'HomeController@index')->name('home');*/

@@ -4,9 +4,28 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import DatePicker from "./components/DatePicker";
+
 require('./bootstrap');
 
 window.Vue = require('vue');
+
+
+
+
+/*
+import VueRouter from 'vue-router';
+Vue.use(VueRouter);
+
+const routes = [
+    { path: '/new-mission', component: require('./components/DatePicker') },
+    { path: '/home', component: Bar }
+]
+
+const router = new VueRouter({
+    routes
+})
+*/
 
 /**
  * The following block of code may be used to automatically register your
@@ -18,8 +37,15 @@ window.Vue = require('vue');
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
+Vue.component('my-datepicker', require('./components/DatePicker.vue').default);
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+
+
+
+
+import Vue from 'vue';
+import VCalendar from 'v-calendar';
+Vue.use(VCalendar);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,6 +55,11 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+    data() {
+        return {
+            range: {
+
+            },
+        };
+    }
 });
-
-
