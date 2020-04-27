@@ -42,12 +42,8 @@
                                             <div class="form-group">
                                                 <label for="mission_name">Sündmuse nimi:</label>
                                                 <textarea class="form-control" rows="1" placeholder="Event Name" name="mission_name" id="mission_name" required></textarea>
-                                                <label for="from_date">Sündmuse algusaeg:</label>
-                                                <textarea class="form-control" rows="1" name="from_date" id="from_date"></textarea>
-                                                <v-date-picker mode="range" v-model="range"></v-date-picker>
-
-                                                <label for="to_date">Sündmuse lõpuaeg:</label>
-                                                <textarea class="form-control" rows="1" name="to_date" id="to_date"></textarea>
+                                                <label for="from_date">Sündmuse toimumise aeg:</label>
+                                                <my-datepicker></my-datepicker>
                                                 <label for="listOfPeople">Lisa osalejad:</label>
                                                 <textarea class="form-control" rows="1" placeholder="osalejate nimed" name="listOfPeople" id="listOfPeople"></textarea>
                                                 <label for="stay_at_night">Kus sündmus toimub? Koha nimi ja millised on ööbimisvõimalused. Kuidas on parkimisega?:</label>
