@@ -44,8 +44,6 @@
                                                 <textarea class="form-control" rows="1" placeholder="Event Name" name="mission_name" id="mission_name" required></textarea>
                                                 <label for="from_date">Sündmuse toimumise aeg:</label>
                                                 <my-datepicker></my-datepicker>
-                                                <label for="listOfPeople">Lisa osalejad:</label>
-                                                <textarea class="form-control" rows="1" placeholder="osalejate nimed" name="listOfPeople" id="listOfPeople"></textarea>
                                                 <label for="stay_at_night">Kus sündmus toimub? Koha nimi ja millised on ööbimisvõimalused. Kuidas on parkimisega?:</label>
                                                 <textarea class="form-control" rows="4" placeholder="kus toimub" name="stay_at_night" id="stay_at_night"></textarea>
                                                 <label for="local_activities">Loetle üles vaba aja veetmise võimalused:</label>
@@ -81,7 +79,7 @@
                                                 <label for="assignments">Osalejate ülesanded. Kui osalejatel on spetsiaalseid ülesandeid, siis täpsustada täitmise kellaaeg, koht ja viis:</label>
                                                 <textarea class="form-control" rows="1" placeholder="ülesanded" name="assignments" id="assignments"></textarea>
                                                 <label for="timeline">Sündmuse timeline:</label>
-                                                <textarea class="form-control" rows="1" placeholder="Timeline" id="timeline"></textarea>
+                                                <textarea class="form-control" rows="1" placeholder="Siin saab sisestada ürituse siseseid sündmuseid" id="timeline" disabled></textarea>
                                             </div>
                                         </div>
                                     </div>

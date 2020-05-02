@@ -23,12 +23,15 @@
                 </div>
             </div>
         </div>
+
+        <!-- Show weather details -->
+        <!-- Show selected mission details -->
         <div class="col-sm-8">
             <div class="card h-100">
                 <div class="card-body">
                 <div class="container">
                     @isset($current_mission)
-
+                        <p>Weather report for {{$forecast_start_date}}</p>
                         <h1 class="card-title">{{$current_mission->mission_name}}</h1>
                         <h5 class="card-title">1. OLUKORD</h5>
                         <ul>
