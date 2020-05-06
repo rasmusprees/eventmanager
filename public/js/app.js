@@ -1926,18 +1926,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
   },
   data: function data() {
     return {
-      from_date: null
+      dateRange: {
+        start: new Date(),
+        end: new Date()
+      }
     };
   }
 });
@@ -37351,31 +37349,79 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("v-date-picker", {
-    attrs: {
-      mode: "range",
-      "min-date": new Date(),
-      "input-props": {
-        placeholder: "Vali kuupäevad",
-        name: "from_date",
-        id: "from_date"
-      },
-      "readonly:": "",
-      false: "",
-      name: "from_date",
-      "is-inline": "",
-      columns: _vm.$screens({ default: 1, md: 2 }),
-      locale: "et",
-      "first-day-of-week": 2
-    },
-    model: {
-      value: _vm.from_date,
-      callback: function($$v) {
-        _vm.from_date = $$v
-      },
-      expression: "from_date"
-    }
-  })
+  return _c(
+    "div",
+    [
+      _c("v-date-picker", {
+        attrs: {
+          mode: "range",
+          "min-date": new Date(),
+          "is-inline": "",
+          columns: _vm.$screens({ default: 1, md: 2 }),
+          locale: "et",
+          "first-day-of-week": 2
+        },
+        model: {
+          value: _vm.dateRange,
+          callback: function($$v) {
+            _vm.dateRange = $$v
+          },
+          expression: "dateRange"
+        }
+      }),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.dateRange.start.toLocaleDateString(),
+            expression: "dateRange.start.toLocaleDateString()"
+          }
+        ],
+        attrs: { type: "hidden", name: "from_date" },
+        domProps: { value: _vm.dateRange.start.toLocaleDateString() },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(
+              _vm.dateRange.start,
+              "toLocaleDateString()",
+              $event.target.value
+            )
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.dateRange.end.toLocaleDateString(),
+            expression: "dateRange.end.toLocaleDateString()"
+          }
+        ],
+        attrs: { type: "hidden", name: "to_date" },
+        domProps: { value: _vm.dateRange.end.toLocaleDateString() },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(
+              _vm.dateRange.end,
+              "toLocaleDateString()",
+              $event.target.value
+            )
+          }
+        }
+      })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Client;
 use Carbon\Carbon;
+use function foo\func;
 
 class MissionsController extends Controller
 {
@@ -90,7 +91,7 @@ class MissionsController extends Controller
 
         $dates = new Dates;
         $dates->from_date = Carbon::parse($request->from_date);
-        $dates->to_date = Carbon::parse($request->from_date);
+        $dates->to_date = Carbon::parse($request->to_date);
         $dates->mission_id = $mission->mission_id;
         $dates->save();
 
@@ -103,7 +104,39 @@ class MissionsController extends Controller
     public function show($mission_id)
     {
         $xmldata = simplexml_load_file("http://www.ilmateenistus.ee/ilma_andmed/xml/forecast.php") or die("Failed to load");
+        $forecast_start_date = $xmldata->forecast[0]['date'];//get first available date for a forecast
+        $forecast_end_date = $xmldata->forecast[3]['date'];//get last available date for a forecast
+        $mission_start_date = Dates::find($mission_id)->from_date;//get the date for the first day of the mission
+        $mission_end_date = Dates::find($mission_id)->to_date;//get the date for the last day of the mission
         $mission_list = Mission::all();
+        $weather_storage = [];
+
+        function weatherman($mission_start_date, $forecast_end_date, $mission_end_date, $xmldata) {
+            if ($mission_start_date <= $forecast_end_date) {
+                /*$forecast_days_left näitab ürituse alguse ja ilmaennustuse viimase päeva vahet, vaja arvutuste jaoks*/
+                $forecast_days_left = ((strtotime($forecast_end_date)) - (strtotime($mission_start_date)))/60/60/24;
+                /*for tsükkel jookseb nii kaua kuni jätkub ilmateadet, kui üritus lõppeb enne ilmateate lõppu,
+                siis kuvatakse vaid see ilmateade mis jääb ürituse raamidesse*/
+                /*$i!==-1 on sellepärast et muidu jääbki for tsükkel jooksma*/
+                for ($i=$forecast_days_left; $i <= 4 && $i!==-1; $i--) {
+                    if ($xmldata->forecast[(3 - $i)]['date'] <= $mission_end_date) {
+                        echo "<div>";
+                        echo $xmldata->forecast[(3 - $i)]['date'];
+                        echo "</br>";
+                        echo $xmldata->forecast[(3 - $i)]->night->text;
+                        echo $xmldata->forecast[(3 - $i)]->day->text;
+                        echo "</br>";
+                        echo "</div>";
+                        //array_push($weather_storage, [$forecast_date, $weather_at_night, $weather_at_day]);
+                    } else {
+                        break;
+                    }
+                }
+            } else {
+                echo "TÄHELEPANU! Äpp näitab ilmateadet vaid 4 päeva ulatuses (" . $xmldata->forecast[0]['date'] . " kuni " . $xmldata->forecast[3]['date'] . "), kui Teie üritus jääb kaugemale tulevikku, siis kahjuks ilmateadet kuvada ei ole võimalik!";
+            }
+        }
+
 
         return view('home', [
             'mission' => Mission::findOrFail($mission_id),
@@ -118,7 +151,14 @@ class MissionsController extends Controller
             'current_participants' => Participants::find($mission_id),
             'current_support' => Support::find($mission_id),
             'current_timeline' => Timeline::find($mission_id),
-            'forecast_start_date' => $xmldata->forecast[0]['date']
+            'forecast_start_date' => $xmldata->forecast[0]['date'],
+            'mission_start_date' => $mission_start_date,
+            'mission_end_date' => $mission_end_date,
+            'forecast_end_date' => $forecast_end_date,
+            'xmldata' => $xmldata,
+            'weatherman' => weatherman($mission_start_date, $forecast_end_date, $mission_end_date, $xmldata)
+
+
         ]);
     }
 }

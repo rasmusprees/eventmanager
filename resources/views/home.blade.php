@@ -14,10 +14,12 @@
                 <div class="card-body">
                     <div class="list-group list-group-flush">
                         <label for="mission" class="control-label"><h1>Your Events:</h1></label>
-                    <!-- Current Tasks -->
+
+                    <!-- Lists all missions on the db. $mission_list is a list of all missions in the database.
+                    Pressing on the link, selected missions id will be used as a part of the page
+                    address to display selected mission details -->
                         @foreach($mission_list as $mission)
-                            <!--<a href="/home/{{$mission->mission_id}}" class="list-group-item list-group-item-action">{{$mission->mission_name}}</a>-->
-                                <a href="/home/{{$mission->mission_id}}" class="list-group-item list-group-item-action">{{$mission->mission_name}}</a>
+                            <a href="/home/{{$mission->mission_id}}" class="list-group-item list-group-item-action">{{$mission->mission_name}}</a>
                         @endforeach
                     </div>
                 </div>
@@ -25,17 +27,25 @@
         </div>
 
         <!-- Show weather details -->
+
         <!-- Show selected mission details -->
         <div class="col-sm-8">
             <div class="card h-100">
                 <div class="card-body">
                 <div class="container">
+
+                    <!-- if $current_mission is sent via controller,
+                    then the view displays details of the selected mission -->
                     @isset($current_mission)
-                        <p>Weather report for {{$forecast_start_date}}</p>
+
+                        <!-- weather API returns its forecast -->
+                        <p>Ilmateade {{$forecast_start_date}} kohta</p>
+                        <h6>{{$weatherman}}</h6>
+
                         <h1 class="card-title">{{$current_mission->mission_name}}</h1>
                         <h5 class="card-title">1. OLUKORD</h5>
                             <ul>
-                                <li><p class="card-text">Kuupäevad.</p></li>
+                                <li><p class="card-text">Toimumise kuupäevad: {{$current_dates->from_date}} kuni {{$current_dates->to_date}}</p></li>
                                 <li><p class="card-text">Kus toimub: {{$current_local_situation->stay_at_night}}.</p></li>
                                 <li><p class="card-text">Võimalikud tegevused: {{$current_local_situation->local_activities}}</p></li>
                             </ul>
