@@ -8,4 +8,5 @@ class Support extends Model
 {
     protected $table = 'support';
     protected $primaryKey = 'support_id';
+    public $timestamps = false;
 }

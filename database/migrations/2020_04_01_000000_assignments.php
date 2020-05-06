@@ -14,11 +14,11 @@ class Assignments extends Migration
     public function up()
     {
         Schema::create('assignments', function (Blueprint $table) {
-            $table->increments('assignments_id');
-            $table->string('assignments');
-            $table->integer('team_id');
-            $table->integer('participants_id');
-            $table->integer('mission_id');
+            $table->increments('assignments_id')->nullable();
+            $table->string('assignments')->nullable();
+            $table->integer('team_id')->nullable();
+            $table->integer('participants_id')->nullable();
+            $table->integer('mission_id')->nullable();
         });
     }
 

@@ -8,4 +8,5 @@ class Teams extends Model
 {
     protected $table = 'teams';
     protected $primaryKey = 'teams_id';
+    public $timestamps = false;
 }

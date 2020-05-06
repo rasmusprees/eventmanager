@@ -15,9 +15,9 @@ class Mission extends Migration
     {
         Schema::create('mission', function (Blueprint $table) {
             $table->increments('mission_id');
-            $table->string('main_goal');
-            $table->string('movement_to_location');
-            $table->string('movement_from_location');
+            $table->string('main_goal')->nullable();
+            $table->string('movement_to_location')->nullable();
+            $table->string('movement_from_location')->nullable();
             $table->string('mission_name');
             $table->timestamps();
         });

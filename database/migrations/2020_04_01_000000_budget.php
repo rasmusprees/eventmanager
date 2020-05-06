@@ -14,9 +14,9 @@ class Budget extends Migration
     public function up()
     {
         Schema::create('budget', function (Blueprint $table) {
-            $table->increments('budget_id');
-            $table->string('budget');
-            $table->integer('mission_id');
+            $table->increments('budget_id')->nullable();
+            $table->string('budget')->nullable();
+            $table->integer('mission_id')->nullable();
         });
     }
 

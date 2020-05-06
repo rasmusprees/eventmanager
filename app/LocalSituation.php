@@ -8,4 +8,5 @@ class LocalSituation extends Model
 {
     protected $table = 'local_situation';
     protected $primaryKey = 'situation_id';
+    public $timestamps = false;
 }

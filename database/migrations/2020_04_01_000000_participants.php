@@ -14,9 +14,9 @@ class Participants extends Migration
     public function up()
     {
         Schema::create('participants', function (Blueprint $table) {
-            $table->increments('participants_id');
-            $table->integer('mission_id');
-            $table->integer('users_id');
+            $table->increments('participants_id')->nullable();
+            $table->integer('mission_id')->nullable();
+            $table->integer('users_id')->nullable();
         });
     }
 

@@ -8,4 +8,5 @@ class Assignments extends Model
 {
     protected $table = 'assignments';
     protected $primaryKey = 'assignments_id';
+    public $timestamps = false;
 }

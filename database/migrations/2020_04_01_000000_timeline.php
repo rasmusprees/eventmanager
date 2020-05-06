@@ -14,10 +14,10 @@ class Timeline extends Migration
     public function up()
     {
         Schema::create('timeline', function (Blueprint $table) {
-            $table->increments('timeline_id');
-            $table->string('event_time');
-            $table->string('event_name');
-            $table->integer('mission_id');
+            $table->increments('timeline_id')->nullable();
+            $table->string('event_time')->nullable();
+            $table->string('event_name')->nullable();
+            $table->integer('mission_id')->nullable();
         });
     }
 

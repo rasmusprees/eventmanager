@@ -1,18 +1,22 @@
+
 <template>
+
     <v-date-picker
-        v-model="date"
+        v-model="from_date"
         mode="range"
         :min-date="new Date()"
         :input-props='{
             placeholder: "Vali kuupäevad",
-            readonly: true
+            name: "from_date",
+            id: "from_date"
           }'
+        readonly: false
+        name="from_date"
         is-inline
         :columns="$screens({ default: 1, md: 2 })"
         locale="et"
         :first-day-of-week="2"
     >
-
     </v-date-picker>
 
 </template>
@@ -25,7 +29,8 @@
         },
         data() {
             return {
-                date: null,
+                from_date: null
+
             };
         },
     }

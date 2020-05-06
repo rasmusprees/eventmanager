@@ -59,7 +59,7 @@
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="main_goal">Mis on sündmuse eesmärk?:</label>
-                                                <textarea class="form-control" rows="1" name="main_goal" id="main_goal" required></textarea>
+                                                <textarea class="form-control" rows="1" name="main_goal" id="main_goal"></textarea>
                                                 <label for="team_name">Kui osalejad moodustavad meeskonnad, siis kes millisesse meeskonda kuulub:</label>
                                                 <textarea class="form-control" rows="1" placeholder="meeskonna nimi" name="team_name" id="team_name"></textarea>
                                             </div>
@@ -73,9 +73,9 @@
                                         <div class="card-body">
                                             <div class="form-group">
                                                 <label for="movement_to_location">Liikumine ürituse toimumise paika. Erinevad transpordi variandid(väljumised kellaajaliselt, peatused kellaajaliselt, piletite hinnad):</label>
-                                                <textarea class="form-control" rows="1" placeholder="liikumine sinna" name="movement_to_location" id="movement_to_location" required></textarea>
+                                                <textarea class="form-control" rows="1" placeholder="liikumine sinna" name="movement_to_location" id="movement_to_location"></textarea>
                                                 <label for="movement_from_location">Liikumine ürituse toimumise paigast tagasi koju. Erinevad transpordi variandid(väljumised kellaajaliselt, peatused kellaajaliselt, piletite hinnad):</label>
-                                                <textarea class="form-control" rows="1" placeholder="liikumine tagasi" name="movement_from_location" id="movement_from_location" required></textarea>
+                                                <textarea class="form-control" rows="1" placeholder="liikumine tagasi" name="movement_from_location" id="movement_from_location"></textarea>
                                                 <label for="assignments">Osalejate ülesanded. Kui osalejatel on spetsiaalseid ülesandeid, siis täpsustada täitmise kellaaeg, koht ja viis:</label>
                                                 <textarea class="form-control" rows="1" placeholder="ülesanded" name="assignments" id="assignments"></textarea>
                                                 <label for="timeline">Sündmuse timeline:</label>

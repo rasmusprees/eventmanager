@@ -14,12 +14,12 @@ class Support extends Migration
     public function up()
     {
         Schema::create('support', function (Blueprint $table) {
-            $table->increments('support_id');
-            $table->string('food');
-            $table->string('clothing');
-            $table->string('equipment');
-            $table->string('emergency');
-            $table->integer('mission_id');
+            $table->increments('support_id')->nullable();
+            $table->string('food')->nullable();
+            $table->string('clothing')->nullable();
+            $table->string('equipment')->nullable();
+            $table->string('emergency')->nullable();
+            $table->integer('mission_id')->nullable();
         });
     }
 

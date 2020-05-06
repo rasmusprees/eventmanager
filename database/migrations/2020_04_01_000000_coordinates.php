@@ -14,9 +14,9 @@ class Coordinates extends Migration
     public function up()
     {
         Schema::create('coordinates', function (Blueprint $table) {
-            $table->increments('coordinates_id');
-            $table->string('coordinates');
-            $table->integer('mission_id');
+            $table->increments('coordinates_id')->nullable();
+            $table->string('coordinates')->nullable();
+            $table->integer('mission_id')->nullable();
         });
     }
 

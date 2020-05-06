@@ -14,9 +14,9 @@ class Teams extends Migration
     public function up()
     {
         Schema::create('teams', function (Blueprint $table) {
-            $table->increments('team_id');
-            $table->string('team_name');
-            $table->integer('mission_id');
+            $table->increments('team_id')->nullable();
+            $table->string('team_name')->nullable();
+            $table->integer('mission_id')->nullable();
         });
     }
 

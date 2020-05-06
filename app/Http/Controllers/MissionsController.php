@@ -17,6 +17,7 @@ use App\Timeline;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Client;
+use Carbon\Carbon;
 
 class MissionsController extends Controller
 {
@@ -86,11 +87,13 @@ class MissionsController extends Controller
         $coms->mission_id = $mission->mission_id;
         $coms->save();
 
+
         $dates = new Dates;
-        $dates->from_date = $request->from_date;
-        $dates->to_date = $request->to_date;
+        $dates->from_date = Carbon::parse($request->from_date);
+        $dates->to_date = Carbon::parse($request->from_date);
         $dates->mission_id = $mission->mission_id;
         $dates->save();
+
 
         $mission_list = Mission::all();
 
@@ -102,14 +105,20 @@ class MissionsController extends Controller
         $xmldata = simplexml_load_file("http://www.ilmateenistus.ee/ilma_andmed/xml/forecast.php") or die("Failed to load");
         $mission_list = Mission::all();
 
-
-
         return view('home', [
             'mission' => Mission::findOrFail($mission_id),
             'mission_list' => $mission_list,
             'current_mission' => Mission::find($mission_id),
+            'current_assignments' => Assignments::find($mission_id),
+            'current_budget' => Budget::find($mission_id),
+            'current_communications' => Communications::find($mission_id),
+            'current_coordinates' => Coordinates::find($mission_id),
+            'current_dates' => Dates::find($mission_id),
+            'current_local_situation' => LocalSituation::find($mission_id),
+            'current_participants' => Participants::find($mission_id),
+            'current_support' => Support::find($mission_id),
+            'current_timeline' => Timeline::find($mission_id),
             'forecast_start_date' => $xmldata->forecast[0]['date']
         ]);
     }
-
 }

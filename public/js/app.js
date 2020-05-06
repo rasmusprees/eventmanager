@@ -1927,13 +1927,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
   },
   data: function data() {
     return {
-      date: null
+      from_date: null
     };
   }
 });
@@ -37353,19 +37357,23 @@ var render = function() {
       "min-date": new Date(),
       "input-props": {
         placeholder: "Vali kuupäevad",
-        readonly: true
+        name: "from_date",
+        id: "from_date"
       },
+      "readonly:": "",
+      false: "",
+      name: "from_date",
       "is-inline": "",
       columns: _vm.$screens({ default: 1, md: 2 }),
       locale: "et",
       "first-day-of-week": 2
     },
     model: {
-      value: _vm.date,
+      value: _vm.from_date,
       callback: function($$v) {
-        _vm.date = $$v
+        _vm.from_date = $$v
       },
-      expression: "date"
+      expression: "from_date"
     }
   })
 }
