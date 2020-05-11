@@ -136,8 +136,6 @@ class MissionsController extends Controller
                 echo "TÄHELEPANU! Äpp näitab ilmateadet vaid 4 päeva ulatuses (" . $xmldata->forecast[0]['date'] . " kuni " . $xmldata->forecast[3]['date'] . "), kui Teie üritus jääb kaugemale tulevikku, siis kahjuks ilmateadet kuvada ei ole võimalik!";
             }
         }
-
-
         return view('home', [
             'mission' => Mission::findOrFail($mission_id),
             'mission_list' => $mission_list,

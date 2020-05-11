@@ -39,7 +39,7 @@
                     @isset($current_mission)
 
                         <!-- weather API returns its forecast -->
-                        <p>Ilmateade {{$forecast_start_date}} kohta</p>
+                        <div><p>Ilmateade {{$forecast_start_date}} kohta</p></div>
                         <h6>{{$weatherman}}</h6>
 
                         <h1 class="card-title">{{$current_mission->mission_name}}</h1>
