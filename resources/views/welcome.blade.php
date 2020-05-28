@@ -81,13 +81,16 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Event manager
+                    Plaanija 2.0
                 </div>
-
+                <div>
+                    <p>Tere tulemast!</p>
+                    <p>Plaanija 2.0 näol on tegemist ürituste planeerimise veebiaplikatsiooniga. Sul on võimalik planeerida üritusi ja neid hiljem oma sõpradega jagada!</p>
+                    <p>Plaanija 2.0 kasutab ilmaandmete kuvamiseks www.ilmateenistus.ee poolt pakutavat API-t.</p>
+                </div>
                 <div class="links">
                     <a href="/login">Login</a>
                     <a href="/register">Register</a>
-                    <a href="https://youtube.com">Youtube</a>
                 </div>
             </div>
         </div>

@@ -14,6 +14,9 @@ use App\LocalSituation;
 use App\Support;
 use App\Teams;
 use App\Timeline;
+use Illuminate\Contracts\Cache\Factory;
+use Illuminate\Contracts\Cache\Repository;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Client;
@@ -23,8 +26,12 @@ use function foo\func;
 class MissionsController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
-
+    /*returns home view with the list of all missions*/
     public function showMissions()
     {
         $mission_list = Mission::all();
@@ -32,11 +39,14 @@ class MissionsController extends Controller
         return view('home', compact('mission_list'));
     }
 
+    /*opens new-mission page, where the user can start a new event*/
     public function createMission()
     {
         return view('new-mission');
     }
 
+    //sends and saves data to database when creating a new event
+    //returns to home view with a list of all missions
     public function sendToDb(Request $request)
     {
         $mission = new Mission;
@@ -88,7 +98,6 @@ class MissionsController extends Controller
         $coms->mission_id = $mission->mission_id;
         $coms->save();
 
-
         $dates = new Dates;
         $dates->from_date = Carbon::parse($request->from_date);
         $dates->to_date = Carbon::parse($request->to_date);
@@ -101,6 +110,8 @@ class MissionsController extends Controller
         return view('home', compact('mission_list'));
     }
 
+    /*request weather info from remote API*/
+    /*sends data from database to be shown on home view when user views a selected mission*/
     public function show($mission_id)
     {
         $xmldata = simplexml_load_file("http://www.ilmateenistus.ee/ilma_andmed/xml/forecast.php") or die("Failed to load");
@@ -109,33 +120,15 @@ class MissionsController extends Controller
         $mission_start_date = Dates::find($mission_id)->from_date;//get the date for the first day of the mission
         $mission_end_date = Dates::find($mission_id)->to_date;//get the date for the last day of the mission
         $mission_list = Mission::all();
-        $weather_storage = [];
+        $forecast_days_left = ((strtotime($forecast_end_date)) - (strtotime($mission_start_date)))/60/60/24;
 
-        function weatherman($mission_start_date, $forecast_end_date, $mission_end_date, $xmldata) {
-            if ($mission_start_date <= $forecast_end_date) {
-                /*$forecast_days_left näitab ürituse alguse ja ilmaennustuse viimase päeva vahet, vaja arvutuste jaoks*/
-                $forecast_days_left = ((strtotime($forecast_end_date)) - (strtotime($mission_start_date)))/60/60/24;
-                /*for tsükkel jookseb nii kaua kuni jätkub ilmateadet, kui üritus lõppeb enne ilmateate lõppu,
-                siis kuvatakse vaid see ilmateade mis jääb ürituse raamidesse*/
-                /*$i!==-1 on sellepärast et muidu jääbki for tsükkel jooksma*/
-                for ($i=$forecast_days_left; $i <= 4 && $i!==-1; $i--) {
-                    if ($xmldata->forecast[(3 - $i)]['date'] <= $mission_end_date) {
-                        echo "<div>";
-                        echo $xmldata->forecast[(3 - $i)]['date'];
-                        echo "</br>";
-                        echo $xmldata->forecast[(3 - $i)]->night->text;
-                        echo $xmldata->forecast[(3 - $i)]->day->text;
-                        echo "</br>";
-                        echo "</div>";
-                        //array_push($weather_storage, [$forecast_date, $weather_at_night, $weather_at_day]);
-                    } else {
-                        break;
-                    }
-                }
-            } else {
-                echo "TÄHELEPANU! Äpp näitab ilmateadet vaid 4 päeva ulatuses (" . $xmldata->forecast[0]['date'] . " kuni " . $xmldata->forecast[3]['date'] . "), kui Teie üritus jääb kaugemale tulevikku, siis kahjuks ilmateadet kuvada ei ole võimalik!";
-            }
-        }
+        //for weather API cache
+        /*if cashe get = not set, siis lisa xmldata cachesse, else küsi data cachest.*/
+        Cache::add('item', "weather is good", 50);
+        $mycache = Cache::get('item');
+
+
+        //send data to view
         return view('home', [
             'mission' => Mission::findOrFail($mission_id),
             'mission_list' => $mission_list,
@@ -154,9 +147,9 @@ class MissionsController extends Controller
             'mission_end_date' => $mission_end_date,
             'forecast_end_date' => $forecast_end_date,
             'xmldata' => $xmldata,
-            'weatherman' => weatherman($mission_start_date, $forecast_end_date, $mission_end_date, $xmldata)
-
-
+            'forecast_days_left' => $forecast_days_left,
+            'mycache' => $mycache
         ]);
     }
+
 }

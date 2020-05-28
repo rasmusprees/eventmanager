@@ -11,22 +11,6 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 
-
-
-/*
-import VueRouter from 'vue-router';
-Vue.use(VueRouter);
-
-const routes = [
-    { path: '/new-mission', component: require('./components/DatePicker') },
-    { path: '/home', component: Bar }
-]
-
-const router = new VueRouter({
-    routes
-})
-*/
-
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -35,13 +19,12 @@ const router = new VueRouter({
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+// when <my-datepicker> is called on the new-mission.blade then DatePicker.vue is used
 Vue.component('my-datepicker', require('./components/DatePicker.vue').default);
 
 
 
-
+//dependencies for v-calendar
 import Vue from 'vue';
 import VCalendar from 'v-calendar';
 Vue.use(VCalendar);

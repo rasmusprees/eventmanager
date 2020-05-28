@@ -4,8 +4,8 @@
 
     <div class="container" id="app">
         <div class="btn-group d-flex">
-            <a href="/home" class="btn btn-primary">Created Events</a>
-            <a href="/new-mission" class="btn btn-primary active">Start New Event</a>
+            <a href="/home" class="btn btn-primary">Loodud sündmused</a>
+            <a href="/new-mission" class="btn btn-primary active">Planeeri uus sündmus</a>
         </div>
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -16,19 +16,24 @@
 
                             <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
                                 <label class="btn btn-secondary active">
-                                    <input type="radio" name="options" id="option1" autocomplete="off" checked data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> 1. Olukord
+                                    <input type="radio" name="options" id="option1" autocomplete="off" checked data-toggle="collapse"
+                                           data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> 1. Olukord
                                 </label>
                                 <label class="btn btn-secondary">
-                                    <input type="radio" name="options" id="option2" autocomplete="off" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> 2. Missioon
+                                    <input type="radio" name="options" id="option2" autocomplete="off" data-toggle="collapse"
+                                           data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> 2. Missioon
                                 </label>
                                 <label class="btn btn-secondary">
-                                    <input type="radio" name="options" id="option3" autocomplete="off" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"> 3. Läbiviimine
+                                    <input type="radio" name="options" id="option3" autocomplete="off" data-toggle="collapse"
+                                           data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"> 3. Läbiviimine
                                 </label>
                                 <label class="btn btn-secondary">
-                                    <input type="radio" name="options" id="option4" autocomplete="off" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour"> 4. Toetus
+                                    <input type="radio" name="options" id="option4" autocomplete="off" data-toggle="collapse"
+                                           data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour"> 4. Toetus
                                 </label>
                                 <label class="btn btn-secondary">
-                                    <input type="radio" name="options" id="option5" autocomplete="off" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive"> 5. Kommunikatsioon
+                                    <input type="radio" name="options" id="option5" autocomplete="off" data-toggle="collapse"
+                                           data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive"> 5. Kommunikatsioon
                                 </label>
                             </div>
 
