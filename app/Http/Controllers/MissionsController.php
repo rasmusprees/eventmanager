@@ -120,10 +120,9 @@ class MissionsController extends Controller
         $mission_start_date = Dates::find($mission_id)->from_date;//get the date for the first day of the mission
         $mission_end_date = Dates::find($mission_id)->to_date;//get the date for the last day of the mission
         $mission_list = Mission::all();
-        $forecast_days_left = ((strtotime($forecast_end_date)) - (strtotime($mission_start_date)))/60/60/24;
+        $forecast_days_left = (date_diff(date_create($forecast_start_date), date_create($forecast_end_date)))->format("%d");
 
         //for weather API cache
-        /*if cashe get = not set, siis lisa xmldata cachesse, else küsi data cachest.*/
         Cache::add('item', "weather is good", 50);
         $mycache = Cache::get('item');
 

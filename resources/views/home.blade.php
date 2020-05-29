@@ -47,23 +47,21 @@
                             <!--for tsükkel jookseb nii kaua kuni jätkub ilmateadet, kui üritus lõppeb enne ilmateate lõppu,
                             siis kuvatakse vaid see ilmateade mis jääb ürituse raamidesse-->
                             <!--$i!==-1 on sellepärast et muidu jääbki for tsükkel jooksma-->
-
-                                @for ($i=$forecast_days_left; $i <= 5 && $i!==-1; --$i)
+                                @for ($i=$forecast_days_left; $i <= 4 && $i!==-1; --$i)
                                     @if ($xmldata->forecast[3 - $i]['date'] <= $mission_end_date)
                                     <div>
                                         <h3>{{$xmldata->forecast[3 - $i]['date']}}</h3>
-                                        <h3>öösel:</h3> {{$xmldata->forecast[3 - $i]->night->text}}
-                                        <br>
-                                        <h3>päeval:</h3> {{$xmldata->forecast[3 - $i]->day->text}}
+                                        {{$xmldata->forecast[3 - $i]->day->text}}
                                         <br>
                                     </div>
-                                    <!--array_push($weather_storage, [$forecast_date, $weather_at_night, $weather_at_day]);-->
                                     @else
                                     @break
                                     @endif
                                 @endfor
                             @else
-                            TÄHELEPANU! Äpp näitab ilmateadet vaid 4 päeva ulatuses - {{$xmldata->forecast[0]['date']}} kuni {{$xmldata->forecast[3]['date']}}, kui Teie üritus jääb kaugemale tulevikku, siis kahjuks ilmateadet kuvada ei ole võimalik!
+                            TÄHELEPANU! Äpp näitab ilmateadet vaid 4 päeva ulatuses - {{$xmldata->forecast[0]['date']}}
+                                    kuni {{$xmldata->forecast[3]['date']}}, kui Teie üritus jääb
+                                    kaugemale tulevikku, siis kahjuks ilmateadet kuvada ei ole võimalik!
                             @endif
                         </div>
 
